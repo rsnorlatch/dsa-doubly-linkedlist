@@ -1,6 +1,7 @@
 #include <cstdlib>
 #include <cstring>
 #include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -10,6 +11,10 @@ struct Book {
 };
 
 const Book NULL_BOOK = Book{};
+
+bool book_is_null(Book book) {
+  return (book.title == NULL_BOOK.title && book.author == NULL_BOOK.author);
+}
 
 #define T Book // we have generics at home
 struct Node {
@@ -132,17 +137,29 @@ Book node_book__search_by_title(Node *node, string title) {
   return NULL_BOOK;
 }
 
-string INPUT_ERROR;
+string ALERT;
 int CHOICE_INPUT;
-string STRING_INPUT;
+
+Node *BOOKSHELF = node__add(NULL_BOOK, NULL);
 
 void page__utama();
-void page__tambah_buku_depan();
-void page__tambah_buku_belakang();
-void page__hapus_buku();
-void page__tampilkan_buku();
 
-void page__tambah_buku_depan() {}
+void page__tambah_buku_depan() {
+  system("clear");
+
+  string title, author;
+
+  cout << "Judul Buku: ";
+  cin.ignore();
+  getline(cin, title);
+
+  cout << "Penulis: ";
+  cin.ignore();
+  getline(cin, author);
+
+  node__insert_first(BOOKSHELF, Book{title, author});
+}
+
 void page__tambah_buku_belakang() {}
 
 void page__hapus_buku() {}
@@ -153,11 +170,11 @@ void page__utama() {
   do {
     system("clear");
 
-    if (INPUT_ERROR != "") {
-      cout << INPUT_ERROR << endl << endl;
+    if (ALERT != "") {
+      cout << ALERT << endl << endl;
     }
 
-    INPUT_ERROR = "";
+    ALERT = "";
 
     cout << "=== menu manajemen daftar buku ===" << endl
          << "1. Tambah buku di depan" << endl
@@ -188,11 +205,11 @@ void page__utama() {
       system("exit");
       break;
     default:
-      INPUT_ERROR = "Pilihan tidak valid. Silahkan masukkan no 1-5!!";
+      ALERT = "Pilihan tidak valid. Silahkan masukkan no 1-5!!";
 
       break;
     }
-  } while (INPUT_ERROR != "");
+  } while (ALERT != "");
 }
 
 int main() {
