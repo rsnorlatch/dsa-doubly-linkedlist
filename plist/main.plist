@@ -17,12 +17,12 @@
         <key>start</key>
          <array>
           <dict>
-           <key>line</key><integer>111</integer>
+           <key>line</key><integer>119</integer>
            <key>col</key><integer>3</integer>
            <key>file</key><integer>0</integer>
           </dict>
           <dict>
-           <key>line</key><integer>111</integer>
+           <key>line</key><integer>119</integer>
            <key>col</key><integer>6</integer>
            <key>file</key><integer>0</integer>
           </dict>
@@ -30,12 +30,12 @@
         <key>end</key>
          <array>
           <dict>
-           <key>line</key><integer>111</integer>
+           <key>line</key><integer>119</integer>
            <key>col</key><integer>13</integer>
            <key>file</key><integer>0</integer>
           </dict>
           <dict>
-           <key>line</key><integer>111</integer>
+           <key>line</key><integer>119</integer>
            <key>col</key><integer>21</integer>
            <key>file</key><integer>0</integer>
           </dict>
@@ -47,7 +47,7 @@
      <key>kind</key><string>event</string>
      <key>location</key>
      <dict>
-      <key>line</key><integer>111</integer>
+      <key>line</key><integer>119</integer>
       <key>col</key><integer>13</integer>
       <key>file</key><integer>0</integer>
      </dict>
@@ -55,12 +55,12 @@
      <array>
        <array>
         <dict>
-         <key>line</key><integer>111</integer>
+         <key>line</key><integer>119</integer>
          <key>col</key><integer>13</integer>
          <key>file</key><integer>0</integer>
         </dict>
         <dict>
-         <key>line</key><integer>111</integer>
+         <key>line</key><integer>119</integer>
          <key>col</key><integer>58</integer>
          <key>file</key><integer>0</integer>
         </dict>
@@ -187,7 +187,7 @@
      <key>kind</key><string>event</string>
      <key>location</key>
      <dict>
-      <key>line</key><integer>111</integer>
+      <key>line</key><integer>119</integer>
       <key>col</key><integer>13</integer>
       <key>file</key><integer>0</integer>
      </dict>
@@ -195,12 +195,12 @@
      <array>
        <array>
         <dict>
-         <key>line</key><integer>111</integer>
+         <key>line</key><integer>119</integer>
          <key>col</key><integer>13</integer>
          <key>file</key><integer>0</integer>
         </dict>
         <dict>
-         <key>line</key><integer>111</integer>
+         <key>line</key><integer>119</integer>
          <key>col</key><integer>58</integer>
          <key>file</key><integer>0</integer>
         </dict>
@@ -220,12 +220,12 @@
         <key>start</key>
          <array>
           <dict>
-           <key>line</key><integer>111</integer>
+           <key>line</key><integer>119</integer>
            <key>col</key><integer>13</integer>
            <key>file</key><integer>0</integer>
           </dict>
           <dict>
-           <key>line</key><integer>111</integer>
+           <key>line</key><integer>119</integer>
            <key>col</key><integer>21</integer>
            <key>file</key><integer>0</integer>
           </dict>
@@ -233,12 +233,12 @@
         <key>end</key>
          <array>
           <dict>
-           <key>line</key><integer>111</integer>
+           <key>line</key><integer>119</integer>
            <key>col</key><integer>3</integer>
            <key>file</key><integer>0</integer>
           </dict>
           <dict>
-           <key>line</key><integer>111</integer>
+           <key>line</key><integer>119</integer>
            <key>col</key><integer>6</integer>
            <key>file</key><integer>0</integer>
           </dict>
@@ -254,12 +254,12 @@
         <key>start</key>
          <array>
           <dict>
-           <key>line</key><integer>111</integer>
+           <key>line</key><integer>119</integer>
            <key>col</key><integer>3</integer>
            <key>file</key><integer>0</integer>
           </dict>
           <dict>
-           <key>line</key><integer>111</integer>
+           <key>line</key><integer>119</integer>
            <key>col</key><integer>6</integer>
            <key>file</key><integer>0</integer>
           </dict>
@@ -267,13 +267,47 @@
         <key>end</key>
          <array>
           <dict>
-           <key>line</key><integer>112</integer>
+           <key>line</key><integer>123</integer>
            <key>col</key><integer>3</integer>
            <key>file</key><integer>0</integer>
           </dict>
           <dict>
-           <key>line</key><integer>112</integer>
-           <key>col</key><integer>6</integer>
+           <key>line</key><integer>123</integer>
+           <key>col</key><integer>13</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+       </dict>
+      </array>
+    </dict>
+    <dict>
+     <key>kind</key><string>control</string>
+     <key>edges</key>
+      <array>
+       <dict>
+        <key>start</key>
+         <array>
+          <dict>
+           <key>line</key><integer>123</integer>
+           <key>col</key><integer>3</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>123</integer>
+           <key>col</key><integer>13</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+        <key>end</key>
+         <array>
+          <dict>
+           <key>line</key><integer>124</integer>
+           <key>col</key><integer>1</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>124</integer>
+           <key>col</key><integer>1</integer>
            <key>file</key><integer>0</integer>
           </dict>
          </array>
@@ -284,8 +318,8 @@
      <key>kind</key><string>event</string>
      <key>location</key>
      <dict>
-      <key>line</key><integer>112</integer>
-      <key>col</key><integer>3</integer>
+      <key>line</key><integer>124</integer>
+      <key>col</key><integer>1</integer>
       <key>file</key><integer>0</integer>
      </dict>
      <key>depth</key><integer>0</integer>
@@ -306,8 +340,8 @@
   <key>issue_hash_function_offset</key><string>1</string>
   <key>location</key>
   <dict>
-   <key>line</key><integer>112</integer>
-   <key>col</key><integer>3</integer>
+   <key>line</key><integer>124</integer>
+   <key>col</key><integer>1</integer>
    <key>file</key><integer>0</integer>
   </dict>
   <key>ExecutedLines</key>
@@ -324,9 +358,59 @@
     <integer>26</integer>
     <integer>29</integer>
     <integer>32</integer>
-    <integer>110</integer>
+    <integer>35</integer>
+    <integer>36</integer>
+    <integer>38</integer>
+    <integer>39</integer>
+    <integer>40</integer>
+    <integer>83</integer>
+    <integer>84</integer>
+    <integer>87</integer>
+    <integer>89</integer>
+    <integer>92</integer>
+    <integer>93</integer>
+    <integer>96</integer>
+    <integer>97</integer>
+    <integer>98</integer>
+    <integer>99</integer>
+    <integer>102</integer>
+    <integer>106</integer>
+    <integer>109</integer>
     <integer>111</integer>
-    <integer>112</integer>
+    <integer>114</integer>
+    <integer>115</integer>
+    <integer>118</integer>
+    <integer>119</integer>
+    <integer>120</integer>
+    <integer>121</integer>
+    <integer>123</integer>
+    <integer>124</integer>
+   </array>
+   <key>1</key>
+   <array>
+    <integer>541</integer>
+    <integer>542</integer>
+    <integer>543</integer>
+    <integer>544</integer>
+    <integer>550</integer>
+   </array>
+   <key>2</key>
+   <array>
+    <integer>667</integer>
+    <integer>668</integer>
+    <integer>669</integer>
+    <integer>670</integer>
+    <integer>673</integer>
+    <integer>674</integer>
+    <integer>675</integer>
+   </array>
+   <key>3</key>
+   <array>
+    <integer>384</integer>
+    <integer>385</integer>
+    <integer>386</integer>
+    <integer>388</integer>
+    <integer>391</integer>
    </array>
   </dict>
   </dict>
@@ -334,6 +418,9 @@
  <key>files</key>
  <array>
   <string>main.cpp</string>
+  <string>D:/my_stuff/coding_thingy/installation/compiler/cpp/mingw64/include/c++/14.2.0/x86_64-w64-mingw32/bits/c++config.h</string>
+  <string>D:/my_stuff/coding_thingy/installation/compiler/cpp/mingw64/include/c++/14.2.0/ostream</string>
+  <string>D:/my_stuff/coding_thingy/installation/compiler/cpp/mingw64/include/c++/14.2.0/bits/char_traits.h</string>
  </array>
 </dict>
 </plist>

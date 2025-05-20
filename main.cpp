@@ -95,7 +95,15 @@ Node *node__delete_last(Node *node) {
 
 Node *node__delete_by_index_rec(Node *node, Node *head, int at_index,
                                 int current) {
-  if (current != at_index)
+  if (at_index == node__length(node) - 1) {
+    return node__delete_last(node);
+  }
+
+  if (at_index == 0) {
+    return node__delete_first(node);
+  }
+
+  if (current + 1 != at_index)
     return node__delete_by_index_rec(node->next, node, at_index, current + 1);
 
   node->next = node->next->next;
@@ -107,4 +115,10 @@ Node *node__delete_by_index(Node *node, int at_index) {
   return node__delete_by_index_rec(node, node, at_index, 0);
 }
 
-int main() { Node *n = node__add(1, node__add(2, node__add(3, NULL))); }
+int main() {
+  Node *n = node__add(1, node__add(2, node__add(3, NULL)));
+  n = node__delete_by_index(n, 1);
+  n = node__delete_by_index(n, 1);
+
+  node__print(n);
+}
