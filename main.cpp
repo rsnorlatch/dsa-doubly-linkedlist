@@ -35,6 +35,7 @@ int node__length_rec(Node *node, int current_index) {
 
 int node__length(Node *node) { return node__length_rec(node, 0); }
 
+// NOTE: only uncomment if T is not a struct
 // TODO: don't forget to free node->next to avoid memory leak
 /*void node__print(Node *node) {*/
 /*  cout << node->value << "->";*/
