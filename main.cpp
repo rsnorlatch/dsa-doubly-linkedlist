@@ -1,13 +1,17 @@
+#include <cstdlib>
+#include <cstring>
 #include <iostream>
 
 using namespace std;
 
 struct Book {
-  string judul;
-  string penulis;
+  string title;
+  string author;
 };
 
-#define T int // we have generics at home
+const Book NULL_BOOK = Book{};
+
+#define T Book // we have generics at home
 struct Node {
   T value;
   Node *next;
@@ -32,16 +36,16 @@ int node__length_rec(Node *node, int current_index) {
 int node__length(Node *node) { return node__length_rec(node, 0); }
 
 // TODO: don't forget to free node->next to avoid memory leak
-void node__print(Node *node) {
-  cout << node->value << "->";
-
-  if (node->next == NULL) {
-    cout << "NULL";
-    return;
-  }
-
-  node__print(node->next);
-}
+/*void node__print(Node *node) {*/
+/*  cout << node->value << "->";*/
+/**/
+/*  if (node->next == NULL) {*/
+/*    cout << "NULL";*/
+/*    return;*/
+/*  }*/
+/**/
+/*  node__print(node->next);*/
+/*}*/
 
 Node *node__insert_first(Node *node, T datawith) {
   return node__add(datawith, node);
@@ -115,10 +119,82 @@ Node *node__delete_by_index(Node *node, int at_index) {
   return node__delete_by_index_rec(node, node, at_index, 0);
 }
 
-int main() {
-  Node *n = node__add(1, node__add(2, node__add(3, NULL)));
-  n = node__delete_by_index(n, 1);
-  n = node__delete_by_index(n, 1);
+Book node_book__search_by_title(Node *node, string title) {
+  Node *current = node;
 
-  node__print(n);
+  while (current->next == NULL) {
+    if (current->value.title == title) {
+      return current->value;
+    }
+  }
+
+  return NULL_BOOK;
+}
+
+string INPUT_ERROR;
+int CHOICE_INPUT;
+string STRING_INPUT;
+
+void page__utama();
+void page__tambah_buku_depan();
+void page__tambah_buku_belakang();
+void page__hapus_buku();
+void page__tampilkan_buku();
+
+void page__tambah_buku_depan() {}
+void page__tambah_buku_belakang() {}
+
+void page__hapus_buku() {}
+
+void page__tampilkan_buku() {}
+
+void page__utama() {
+  do {
+    system("clear");
+
+    if (INPUT_ERROR != "") {
+      cout << INPUT_ERROR << endl << endl;
+    }
+
+    INPUT_ERROR = "";
+
+    cout << "=== menu manajemen daftar buku ===" << endl
+         << "1. Tambah buku di depan" << endl
+         << "2. Tambah buku di belakang" << endl
+         << "3. Hapus buku berdasarkan judul" << endl
+         << "4. Tampilkan daftar buku" << endl
+         << "5. Keluar" << endl
+         << endl;
+
+    cout << "pilih: ";
+    cin >> CHOICE_INPUT;
+
+    switch (CHOICE_INPUT) {
+    case 1:
+      page__tambah_buku_depan();
+      break;
+    case 2:
+      page__tambah_buku_belakang();
+      break;
+    case 3:
+      page__hapus_buku();
+      break;
+    case 4:
+      page__hapus_buku();
+      break;
+    case 5:
+      cout << "bye bye." << endl;
+      system("exit");
+      break;
+    default:
+      INPUT_ERROR = "Pilihan tidak valid. Silahkan masukkan no 1-5!!";
+
+      break;
+    }
+  } while (INPUT_ERROR != "");
+}
+
+int main() {
+  page__utama();
+  return 0;
 }
