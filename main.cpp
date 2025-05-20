@@ -21,6 +21,16 @@ Node *node__add(T data, Node *next) {
   return n;
 }
 
+int node__length_rec(Node *node, int current_index) {
+  if (node->next == NULL) {
+    return current_index + 1;
+  }
+
+  return node__length_rec(node->next, current_index + 1);
+}
+
+int node__length(Node *node) { return node__length_rec(node, 0); }
+
 // TODO: don't forget to free node->next to avoid memory leak
 void node__print(Node *node) {
   cout << node->value << "->";
@@ -97,7 +107,4 @@ Node *node__delete_by_index(Node *node, int at_index) {
   return node__delete_by_index_rec(node, node, at_index, 0);
 }
 
-int main() {
-  Node *n = node__add(1, node__add(2, node__add(3, NULL)));
-  node__print(n);
-}
+int main() { Node *n = node__add(1, node__add(2, node__add(3, NULL))); }
