@@ -25,15 +25,15 @@ Node *node__add(T data, Node *next) {
   return n;
 }
 
-int node__length_rec(Node *node, int current_index) {
+int _node__length_rec(Node *node, int current_index) {
   if (node->next == NULL) {
     return current_index + 1;
   }
 
-  return node__length_rec(node->next, current_index + 1);
+  return _node__length_rec(node->next, current_index + 1);
 }
 
-int node__length(Node *node) { return node__length_rec(node, 0); }
+int node__length(Node *node) { return _node__length_rec(node, 0); }
 
 // NOTE: only uncomment if T is not a struct
 // TODO: don't forget to free node->next to avoid memory leak
@@ -52,9 +52,9 @@ Node *node__insert_first(Node *node, T datawith) {
   return node__add(datawith, node);
 }
 
-Node *node__insert_last_rec(Node *node, Node *head, T datawith) {
+Node *_node__insert_last_rec(Node *node, Node *head, T datawith) {
   if (node->next != NULL)
-    return node__insert_last_rec(node->next, head, datawith);
+    return _node__insert_last_rec(node->next, head, datawith);
 
   node->next = node__add(datawith, NULL);
 
@@ -62,14 +62,14 @@ Node *node__insert_last_rec(Node *node, Node *head, T datawith) {
 }
 
 Node *node__insert_last(Node *node, T datawith) {
-  return node__insert_last_rec(node, node, datawith);
+  return _node__insert_last_rec(node, node, datawith);
 }
 
-Node *node__insert_by_index_rec(Node *node, Node *head, int at_index,
-                                int current, T datawith) {
+Node *_node__insert_by_index_rec(Node *node, Node *head, int at_index,
+                                 int current, T datawith) {
   if (current != at_index)
-    return node__insert_by_index_rec(node->next, node, at_index, current + 1,
-                                     datawith);
+    return _node__insert_by_index_rec(node->next, node, at_index, current + 1,
+                                      datawith);
 
   Node *to_free = node->next;
   node->next = node__add(datawith, node->next->next);
@@ -80,14 +80,14 @@ Node *node__insert_by_index_rec(Node *node, Node *head, int at_index,
 }
 
 Node *node__insert_by_index(Node *node, int at_index, T datawith) {
-  return node__insert_by_index_rec(node, node, at_index, 0, datawith);
+  return _node__insert_by_index_rec(node, node, at_index, 0, datawith);
 }
 
 Node *node__delete_first(Node *node) { return node->next; }
 
-Node *node__delete_last_rec(Node *node, Node *head) {
+Node *_node__delete_last_rec(Node *node, Node *head) {
   if (node->next->next != NULL)
-    return node__delete_last_rec(node->next, head);
+    return _node__delete_last_rec(node->next, head);
 
   node->next = NULL;
 
@@ -95,11 +95,11 @@ Node *node__delete_last_rec(Node *node, Node *head) {
 }
 
 Node *node__delete_last(Node *node) {
-  return node__delete_last_rec(node, node);
+  return _node__delete_last_rec(node, node);
 }
 
-Node *node__delete_by_index_rec(Node *node, Node *head, int at_index,
-                                int current) {
+Node *_node__delete_by_index_rec(Node *node, Node *head, int at_index,
+                                 int current) {
   if (at_index == node__length(node) - 1) {
     return node__delete_last(node);
   }
@@ -109,7 +109,7 @@ Node *node__delete_by_index_rec(Node *node, Node *head, int at_index,
   }
 
   if (current + 1 != at_index)
-    return node__delete_by_index_rec(node->next, node, at_index, current + 1);
+    return _node__delete_by_index_rec(node->next, node, at_index, current + 1);
 
   node->next = node->next->next;
 
@@ -117,7 +117,7 @@ Node *node__delete_by_index_rec(Node *node, Node *head, int at_index,
 }
 
 Node *node__delete_by_index(Node *node, int at_index) {
-  return node__delete_by_index_rec(node, node, at_index, 0);
+  return _node__delete_by_index_rec(node, node, at_index, 0);
 }
 
 Book node_book__search_by_title(Node *node, string title) {
