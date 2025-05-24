@@ -24,11 +24,22 @@ struct Node {
 };
 
 Node *node__add(T data, Node *next) {
-  Node *n = (Node *)malloc(sizeof(Node));
+  Node *n = new Node;
   n->value = data;
   n->next = next;
 
   return n;
+}
+
+void node__free(Node *node) {
+  Node *current = node;
+  delete current;
+
+  if (node->next == nullptr) {
+    return;
+  }
+
+  node__free(node->next);
 }
 
 int _node__length_rec(Node *node, int current_index) {
@@ -66,7 +77,10 @@ Node *_node__insert_last_rec(Node *node, Node *head, T datawith) {
   if (node->next != nullptr)
     return _node__insert_last_rec(node->next, head, datawith);
 
+  Node *to_free = node->next;
   node->next = node__add(datawith, nullptr);
+
+  delete to_free;
 
   return head;
 }
@@ -84,7 +98,7 @@ Node *_node__insert_by_index_rec(Node *node, Node *head, int at_index,
   Node *to_free = node->next;
   node->next = node__add(datawith, node->next->next);
 
-  free(to_free);
+  delete to_free;
 
   return head;
 }
@@ -182,11 +196,11 @@ void page__tambah_buku_belakang() {
     ALERT = "";
 
     cout << "Judul Buku: ";
-    cin.clear();
+    cin.ignore();
     getline(cin, title);
 
     cout << "Penulis: ";
-    cin.clear();
+    cin.ignore();
     getline(cin, author);
 
     if (title == "" || author == "") {
@@ -197,7 +211,7 @@ void page__tambah_buku_belakang() {
   } while (title == "" && author == "");
   ALERT = "";
 
-  node__insert_last(BOOKSHELF, Book{title, author});
+  BOOKSHELF = node__insert_last(BOOKSHELF, Book{title, author});
 
   cout << "Berhasil menambahkan buku berjudul " << title
        << " yang ditulis oleh " << author << "ke belakang rak" << endl;
