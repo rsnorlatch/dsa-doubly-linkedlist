@@ -1,3 +1,4 @@
+#include <cstdio>
 #include <cstdlib>
 #include <cstring>
 #include <iostream>
@@ -54,6 +55,11 @@ int node__length(Node *node) { return _node__length_rec(node, 0); }
 /*}*/
 
 void node__print_book(Node *node) {
+  if (node == nullptr) {
+    cout << "koleksi kosong." << endl;
+    return;
+  }
+
   cout << "===" << endl;
   cout << "Judul: " << node->value.title << endl;
   cout << "Penulis: " << node->value.author << endl << endl;
@@ -176,7 +182,18 @@ void page__tambah_buku_belakang() { system("clear"); }
 
 void page__hapus_buku() { system("clear"); }
 
-void page__tampilkan_buku() { system("clear"); }
+void page__tampilkan_buku() {
+  system("clear");
+
+  cout << "Koleksi buku anda: " << endl;
+
+  node__print_book(BOOKSHELF);
+
+  cout << "Tekan tombol sembarang untuk kembali ke halaman awal..." << endl;
+  getchar();
+
+  page__utama();
+}
 
 void page__utama() {
   do {
