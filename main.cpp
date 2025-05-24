@@ -18,39 +18,41 @@ bool book_is_null(Book book) {
 }
 
 #define T Book // we have generics at home
-struct Node {
+struct Node2 {
   T value;
-  Node *next;
+  Node2 *left;
+  Node2 *right;
 };
 
-Node *node__add(T data, Node *next) {
-  Node *n = new Node;
+Node2 *node__add(T data, Node2 *left, Node2 *right) {
+  Node2 *n = new Node2;
   n->value = data;
-  n->next = next;
+  n->left = left;
+  n->right = right;
 
   return n;
 }
 
-void node__free(Node *node) {
-  Node *current = node;
+void node__free(Node2 *node) {
+  Node2 *current = node;
   delete current;
 
-  if (node->next == nullptr) {
+  if (node->right == nullptr) {
     return;
   }
 
-  node__free(node->next);
+  node__free(node->right);
 }
 
-int _node__length_rec(Node *node, int current_index) {
-  if (node->next == NULL) {
+int _node__length_rec(Node2 *node, int current_index) {
+  if (node->right == NULL) {
     return current_index + 1;
   }
 
-  return _node__length_rec(node->next, current_index + 1);
+  return _node__length_rec(node->right, current_index + 1);
 }
 
-int node__length(Node *node) { return _node__length_rec(node, 0); }
+int node__length(Node2 *node) { return _node__length_rec(node, 0); }
 
 /*// NOTE: only uncomment if T is not a struct*/
 /*// TODO: don't forget to free node->next to avoid memory leak*/
@@ -65,65 +67,71 @@ int node__length(Node *node) { return _node__length_rec(node, 0); }
 /*  node__print(node->next);*/
 /*}*/
 
-Node *node__insert_first(Node *node, T datawith) {
-  return node__add(datawith, node);
-}
+Node2 *node__insert_first(Node2 *node, T datawith) {
+  Node2 *new_node = node__add(datawith, nullptr, node);
 
-Node *_node__insert_last_rec(Node *node, Node *head, T datawith) {
-  if (node == nullptr) {
-    return node__add(datawith, nullptr);
+  if (node != nullptr) {
+    node->left = new_node;
   }
 
-  if (node->next != nullptr)
-    return _node__insert_last_rec(node->next, head, datawith);
+  return new_node;
+}
 
-  Node *to_free = node->next;
-  node->next = node__add(datawith, nullptr);
+Node2 *_node__insert_last_rec(Node2 *node, Node2 *head, T datawith) {
+  if (node == nullptr) {
+    return node__add(datawith, node, nullptr);
+  }
+
+  if (node->right != nullptr)
+    return _node__insert_last_rec(node->right, head, datawith);
+
+  Node2 *to_free = node->right;
+  node->right = node__add(datawith, node, nullptr);
 
   delete to_free;
 
   return head;
 }
 
-Node *node__insert_last(Node *node, T datawith) {
+Node2 *node__insert_last(Node2 *node, T datawith) {
   return _node__insert_last_rec(node, node, datawith);
 }
 
-Node *_node__insert_by_index_rec(Node *node, Node *head, int at_index,
-                                 int current, T datawith) {
+Node2 *_node__insert_by_index_rec(Node2 *node, Node2 *head, int at_index,
+                                  int current, T datawith) {
   if (current != at_index)
-    return _node__insert_by_index_rec(node->next, node, at_index, current + 1,
+    return _node__insert_by_index_rec(node->right, node, at_index, current + 1,
                                       datawith);
 
-  Node *to_free = node->next;
-  node->next = node__add(datawith, node->next->next);
+  Node2 *to_free = node->right;
+  node->right = node__add(datawith, node->right, node->right->right);
 
   delete to_free;
 
   return head;
 }
 
-Node *node__insert_by_index(Node *node, int at_index, T datawith) {
+Node2 *node__insert_by_index(Node2 *node, int at_index, T datawith) {
   return _node__insert_by_index_rec(node, node, at_index, 0, datawith);
 }
 
-Node *node__delete_first(Node *node) { return node->next; }
+Node2 *node__delete_first(Node2 *node) { return node->right; }
 
-Node *_node__delete_last_rec(Node *node, Node *head) {
-  if (node->next->next != NULL)
-    return _node__delete_last_rec(node->next, head);
+Node2 *_node__delete_last_rec(Node2 *node, Node2 *head) {
+  if (node->right->right != NULL)
+    return _node__delete_last_rec(node->right, head);
 
-  node->next = NULL;
+  node->right = NULL;
 
   return head;
 }
 
-Node *node__delete_last(Node *node) {
+Node2 *node__delete_last(Node2 *node) {
   return _node__delete_last_rec(node, node);
 }
 
-Node *_node__delete_by_index_rec(Node *node, Node *head, int at_index,
-                                 int current) {
+Node2 *_node__delete_by_index_rec(Node2 *node, Node2 *head, int at_index,
+                                  int current) {
   if (at_index == node__length(node) - 1) {
     return node__delete_last(node);
   }
@@ -133,18 +141,18 @@ Node *_node__delete_by_index_rec(Node *node, Node *head, int at_index,
   }
 
   if (current + 1 != at_index)
-    return _node__delete_by_index_rec(node->next, node, at_index, current + 1);
+    return _node__delete_by_index_rec(node->right, node, at_index, current + 1);
 
-  node->next = node->next->next;
+  node->right = node->right->right;
 
   return head;
 }
 
-Node *node__delete_by_index(Node *node, int at_index) {
+Node2 *node__delete_by_index(Node2 *node, int at_index) {
   return _node__delete_by_index_rec(node, node, at_index, 0);
 }
 
-void node_book__print(Node *node) {
+void node_book__print(Node2 *node) {
   if (node == nullptr) {
     cout << "Rak kosong." << endl;
     return;
@@ -154,38 +162,38 @@ void node_book__print(Node *node) {
   cout << "Judul: " << node->value.title << endl;
   cout << "Penulis: " << node->value.author << endl << endl;
 
-  if (node->next == nullptr) {
+  if (node->right == nullptr) {
     return;
   }
 
-  node_book__print(node->next);
+  node_book__print(node->right);
 }
 
-Node *_node__delete_by_address_req(Node *node, Node *head, Node *target) {
+Node2 *_node__delete_by_address_req(Node2 *node, Node2 *head, Node2 *target) {
   if (node == nullptr) {
     return nullptr;
   }
 
-  if (node->next == nullptr) {
+  if (node->right == nullptr) {
     return head;
   }
 
-  if (node->next == target) {
-    Node *to_delete = node->next;
-    node->next = node->next->next;
+  if (node->right == target) {
+    Node2 *to_delete = node->right;
+    node->right = node->right->right;
 
     delete to_delete;
     return head;
   }
 
-  return _node__delete_by_address_req(node->next, head, target);
+  return _node__delete_by_address_req(node->right, head, target);
 }
 
-Node *node__delete_by_address(Node *node, Node *target) {
+Node2 *node__delete_by_address(Node2 *node, Node2 *target) {
   return _node__delete_by_address_req(node, node, target);
 }
 
-Node *node_book__find_by_title(Node *node, string title) {
+Node2 *node_book__find_by_title(Node2 *node, string title) {
   if (node == nullptr) {
     return nullptr;
   }
@@ -194,13 +202,13 @@ Node *node_book__find_by_title(Node *node, string title) {
     return node;
   }
 
-  return node_book__find_by_title(node->next, title);
+  return node_book__find_by_title(node->right, title);
 }
 
 string ALERT;
 int CHOICE_INPUT;
 
-Node *BOOKSHELF = nullptr;
+Node2 *BOOKSHELF = nullptr;
 
 void page__utama();
 
@@ -288,7 +296,7 @@ void page__hapus_buku() {
   cin.ignore();
   getline(cin, title);
 
-  Node *target_node = node_book__find_by_title(BOOKSHELF, title);
+  Node2 *target_node = node_book__find_by_title(BOOKSHELF, title);
 
   if (target_node == nullptr) {
     cout << "buku tidak ditemukkan" << endl;
