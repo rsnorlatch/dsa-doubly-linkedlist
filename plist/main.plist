@@ -17,117 +17,6 @@
         <key>start</key>
          <array>
           <dict>
-           <key>line</key><integer>309</integer>
-           <key>col</key><integer>3</integer>
-           <key>file</key><integer>0</integer>
-          </dict>
-          <dict>
-           <key>line</key><integer>309</integer>
-           <key>col</key><integer>13</integer>
-           <key>file</key><integer>0</integer>
-          </dict>
-         </array>
-        <key>end</key>
-         <array>
-          <dict>
-           <key>line</key><integer>310</integer>
-           <key>col</key><integer>3</integer>
-           <key>file</key><integer>0</integer>
-          </dict>
-          <dict>
-           <key>line</key><integer>310</integer>
-           <key>col</key><integer>12</integer>
-           <key>file</key><integer>0</integer>
-          </dict>
-         </array>
-       </dict>
-      </array>
-    </dict>
-    <dict>
-     <key>kind</key><string>event</string>
-     <key>location</key>
-     <dict>
-      <key>line</key><integer>310</integer>
-      <key>col</key><integer>3</integer>
-      <key>file</key><integer>0</integer>
-     </dict>
-     <key>ranges</key>
-     <array>
-       <array>
-        <dict>
-         <key>line</key><integer>310</integer>
-         <key>col</key><integer>3</integer>
-         <key>file</key><integer>0</integer>
-        </dict>
-        <dict>
-         <key>line</key><integer>310</integer>
-         <key>col</key><integer>23</integer>
-         <key>file</key><integer>0</integer>
-        </dict>
-       </array>
-     </array>
-     <key>depth</key><integer>0</integer>
-     <key>extended_message</key>
-     <string>Calling &apos;node__free&apos;</string>
-     <key>message</key>
-     <string>Calling &apos;node__free&apos;</string>
-    </dict>
-    <dict>
-     <key>kind</key><string>event</string>
-     <key>location</key>
-     <dict>
-      <key>line</key><integer>34</integer>
-      <key>col</key><integer>1</integer>
-      <key>file</key><integer>0</integer>
-     </dict>
-     <key>depth</key><integer>1</integer>
-     <key>extended_message</key>
-     <string>Entered call from &apos;main&apos;</string>
-     <key>message</key>
-     <string>Entered call from &apos;main&apos;</string>
-    </dict>
-    <dict>
-     <key>kind</key><string>control</string>
-     <key>edges</key>
-      <array>
-       <dict>
-        <key>start</key>
-         <array>
-          <dict>
-           <key>line</key><integer>34</integer>
-           <key>col</key><integer>1</integer>
-           <key>file</key><integer>0</integer>
-          </dict>
-          <dict>
-           <key>line</key><integer>34</integer>
-           <key>col</key><integer>4</integer>
-           <key>file</key><integer>0</integer>
-          </dict>
-         </array>
-        <key>end</key>
-         <array>
-          <dict>
-           <key>line</key><integer>35</integer>
-           <key>col</key><integer>3</integer>
-           <key>file</key><integer>0</integer>
-          </dict>
-          <dict>
-           <key>line</key><integer>35</integer>
-           <key>col</key><integer>6</integer>
-           <key>file</key><integer>0</integer>
-          </dict>
-         </array>
-       </dict>
-      </array>
-    </dict>
-    <dict>
-     <key>kind</key><string>control</string>
-     <key>edges</key>
-      <array>
-       <dict>
-        <key>start</key>
-         <array>
-          <dict>
            <key>line</key><integer>35</integer>
            <key>col</key><integer>3</integer>
            <key>file</key><integer>0</integer>
@@ -177,7 +66,7 @@
         </dict>
        </array>
      </array>
-     <key>depth</key><integer>1</integer>
+     <key>depth</key><integer>0</integer>
      <key>extended_message</key>
      <string>Memory is released</string>
      <key>message</key>
@@ -274,7 +163,7 @@
         </dict>
        </array>
      </array>
-     <key>depth</key><integer>1</integer>
+     <key>depth</key><integer>0</integer>
      <key>extended_message</key>
      <string>Use of memory after it is freed</string>
      <key>message</key>
@@ -306,109 +195,6 @@
     <integer>35</integer>
     <integer>36</integer>
     <integer>38</integer>
-    <integer>262</integer>
-    <integer>263</integer>
-    <integer>264</integer>
-    <integer>266</integer>
-    <integer>267</integer>
-    <integer>270</integer>
-    <integer>272</integer>
-    <integer>273</integer>
-    <integer>274</integer>
-    <integer>275</integer>
-    <integer>276</integer>
-    <integer>277</integer>
-    <integer>278</integer>
-    <integer>280</integer>
-    <integer>281</integer>
-    <integer>283</integer>
-    <integer>300</integer>
-    <integer>301</integer>
-    <integer>303</integer>
-    <integer>305</integer>
-    <integer>308</integer>
-    <integer>309</integer>
-    <integer>310</integer>
-   </array>
-   <key>1</key>
-   <array>
-    <integer>541</integer>
-    <integer>542</integer>
-    <integer>543</integer>
-    <integer>544</integer>
-    <integer>550</integer>
-   </array>
-   <key>2</key>
-   <array>
-    <integer>115</integer>
-    <integer>116</integer>
-    <integer>117</integer>
-    <integer>121</integer>
-    <integer>667</integer>
-    <integer>668</integer>
-    <integer>669</integer>
-    <integer>670</integer>
-    <integer>673</integer>
-    <integer>674</integer>
-    <integer>675</integer>
-    <integer>740</integer>
-    <integer>741</integer>
-    <integer>742</integer>
-    <integer>762</integer>
-    <integer>763</integer>
-    <integer>764</integer>
-   </array>
-   <key>3</key>
-   <array>
-    <integer>365</integer>
-    <integer>366</integer>
-    <integer>367</integer>
-    <integer>368</integer>
-    <integer>371</integer>
-    <integer>381</integer>
-    <integer>384</integer>
-    <integer>385</integer>
-    <integer>386</integer>
-    <integer>388</integer>
-    <integer>391</integer>
-   </array>
-   <key>4</key>
-   <array>
-    <integer>3771</integer>
-    <integer>3772</integer>
-    <integer>3773</integer>
-    <integer>3774</integer>
-    <integer>3775</integer>
-    <integer>3776</integer>
-    <integer>3859</integer>
-    <integer>3860</integer>
-    <integer>3861</integer>
-    <integer>3862</integer>
-    <integer>4076</integer>
-    <integer>4077</integer>
-    <integer>4078</integer>
-    <integer>4079</integer>
-    <integer>4082</integer>
-   </array>
-   <key>5</key>
-   <array>
-    <integer>46</integer>
-    <integer>47</integer>
-    <integer>48</integer>
-    <integer>49</integer>
-    <integer>51</integer>
-    <integer>452</integer>
-    <integer>453</integer>
-    <integer>454</integer>
-   </array>
-   <key>6</key>
-   <array>
-    <integer>879</integer>
-    <integer>880</integer>
-    <integer>881</integer>
-    <integer>882</integer>
-    <integer>884</integer>
-    <integer>885</integer>
    </array>
   </dict>
   </dict>
@@ -416,12 +202,6 @@
  <key>files</key>
  <array>
   <string>main.cpp</string>
-  <string>D:/my_stuff/coding_thingy/installation/compiler/cpp/mingw64/include/c++/14.2.0/x86_64-w64-mingw32/bits/c++config.h</string>
-  <string>D:/my_stuff/coding_thingy/installation/compiler/cpp/mingw64/include/c++/14.2.0/ostream</string>
-  <string>D:/my_stuff/coding_thingy/installation/compiler/cpp/mingw64/include/c++/14.2.0/bits/char_traits.h</string>
-  <string>D:/my_stuff/coding_thingy/installation/compiler/cpp/mingw64/include/c++/14.2.0/bits/basic_string.h</string>
-  <string>D:/my_stuff/coding_thingy/installation/compiler/cpp/mingw64/include/c++/14.2.0/bits/basic_ios.h</string>
-  <string>D:/my_stuff/coding_thingy/installation/compiler/cpp/mingw64/include/c++/14.2.0/bits/locale_facets.h</string>
  </array>
 </dict>
 </plist>

@@ -161,6 +161,42 @@ void node_book__print(Node *node) {
   node_book__print(node->next);
 }
 
+Node *_node__delete_by_address_req(Node *node, Node *head, Node *target) {
+  if (node == nullptr) {
+    return nullptr;
+  }
+
+  if (node->next == nullptr) {
+    return head;
+  }
+
+  if (node->next == target) {
+    Node *to_delete = node->next;
+    node->next = node->next->next;
+
+    delete to_delete;
+    return head;
+  }
+
+  return _node__delete_by_address_req(node->next, head, target);
+}
+
+Node *node__delete_by_address(Node *node, Node *target) {
+  return _node__delete_by_address_req(node, node, target);
+}
+
+Node *node_book__find_by_title(Node *node, string title) {
+  if (node == nullptr) {
+    return nullptr;
+  }
+
+  if (node->value.title == title) {
+    return node;
+  }
+
+  return node_book__find_by_title(node->next, title);
+}
+
 string ALERT;
 int CHOICE_INPUT;
 
@@ -244,7 +280,29 @@ void page__tambah_buku_belakang() {
   page__utama();
 }
 
-void page__hapus_buku() { system("clear"); }
+void page__hapus_buku() {
+  system("clear");
+  string title;
+
+  cout << "masukkan judul buku yang ingin dihapus: ";
+  cin.ignore();
+  getline(cin, title);
+
+  Node *target_node = node_book__find_by_title(BOOKSHELF, title);
+
+  if (target_node == nullptr) {
+    cout << "buku tidak ditemukkan" << endl;
+  } else {
+    BOOKSHELF = node__delete_by_address(BOOKSHELF, target_node);
+
+    cout << "Buku dengan judul " << title << "berhasil dihapus" << endl;
+  }
+
+  cout << "tekan sembarang tombol untuk kembali ke halaman awal" << endl;
+  getchar();
+
+  page__utama();
+}
 
 void page__tampilkan_buku() {
   system("clear");
