@@ -170,18 +170,40 @@ void page__utama();
 
 void page__tambah_buku_depan() {
   system("clear");
-
   string title, author;
+  ALERT = "";
 
-  cout << "Judul Buku: ";
-  cin.ignore();
-  getline(cin, title);
+  do {
+    system("clear");
+    if (ALERT != "") {
+      cout << ALERT << endl;
+    }
 
-  cout << "Penulis: ";
-  cin.ignore();
-  getline(cin, author);
+    cout << "Judul Buku: ";
+    cin.ignore();
+    getline(cin, title);
+
+    cout << "Penulis: ";
+    cin.ignore();
+    getline(cin, author);
+
+    if (title == "" || author == "") {
+      ALERT = "tolong cantumkan judul atau penulis!";
+      system("clear");
+    }
+
+  } while (title == "" && author == "");
+  ALERT = "";
 
   BOOKSHELF = node__insert_first(BOOKSHELF, Book{title, author});
+
+  cout << "Berhasil menambahkan buku berjudul " << title
+       << " yang ditulis oleh " << author << "ke depan rak" << endl;
+  cout << "tekan tombol sembarang untuk kembali ke halaman awal..." << endl;
+
+  getchar();
+
+  page__utama();
 }
 
 void page__tambah_buku_belakang() {
