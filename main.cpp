@@ -140,7 +140,7 @@ Book node_book__search_by_title(Node *node, string title) {
 string ALERT;
 int CHOICE_INPUT;
 
-Node *BOOKSHELF = node__add(NULL_BOOK, NULL);
+Node *BOOKSHELF = nullptr;
 
 void page__utama();
 
@@ -214,5 +214,6 @@ void page__utama() {
 
 int main() {
   page__utama();
+  cout << "hello world" << endl;
   return 0;
 }
