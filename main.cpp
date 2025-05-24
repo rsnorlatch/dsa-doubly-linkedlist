@@ -283,4 +283,7 @@ void page__utama() {
   } while (ALERT != "");
 }
 
-int main() { page__utama(); }
+int main() {
+  page__utama();
+  node__free(BOOKSHELF);
+}
