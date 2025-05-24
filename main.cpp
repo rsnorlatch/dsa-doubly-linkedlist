@@ -17,7 +17,7 @@ bool book_is_null(Book book) {
   return (book.title == NULL_BOOK.title && book.author == NULL_BOOK.author);
 }
 
-#define T Book // we have generics at home
+#define T int // we have generics at home
 struct Node {
   T value;
   Node *next;
@@ -43,32 +43,15 @@ int node__length(Node *node) { return _node__length_rec(node, 0); }
 
 // NOTE: only uncomment if T is not a struct
 // TODO: don't forget to free node->next to avoid memory leak
-/*void node__print(Node *node) {*/
-/*  cout << node->value << "->";*/
-/**/
-/*  if (node->next == NULL) {*/
-/*    cout << "NULL";*/
-/*    return;*/
-/*  }*/
-/**/
-/*  node__print(node->next);*/
-/*}*/
+void node__print(Node *node) {
+  cout << node->value << "->";
 
-void node__print_book(Node *node) {
-  if (node == nullptr) {
-    cout << "koleksi kosong." << endl;
+  if (node->next == NULL) {
+    cout << "NULL";
     return;
   }
 
-  cout << "===" << endl;
-  cout << "Judul: " << node->value.title << endl;
-  cout << "Penulis: " << node->value.author << endl << endl;
-
-  if (node->next == nullptr) {
-    return;
-  }
-
-  node__print_book(node->next);
+  node__print(node->next);
 }
 
 Node *node__insert_first(Node *node, T datawith) {
@@ -76,10 +59,14 @@ Node *node__insert_first(Node *node, T datawith) {
 }
 
 Node *_node__insert_last_rec(Node *node, Node *head, T datawith) {
-  if (node->next != NULL)
+  if (node == nullptr) {
+    return node__add(datawith, nullptr);
+  }
+
+  if (node->next != nullptr)
     return _node__insert_last_rec(node->next, head, datawith);
 
-  node->next = node__add(datawith, NULL);
+  node->next = node__add(datawith, nullptr);
 
   return head;
 }
@@ -143,102 +130,12 @@ Node *node__delete_by_index(Node *node, int at_index) {
   return _node__delete_by_index_rec(node, node, at_index, 0);
 }
 
-Book node_book__search_by_title(Node *node, string title) {
-  Node *current = node;
+int main() {
+  Node *n = nullptr;
 
-  while (current->next != NULL) {
-    if (current->value.title == title) {
-      return current->value;
-    }
-  }
+  n = node__insert_last(n, 1);
+  n = node__insert_last(n, 2);
+  n = node__insert_last(n, 3);
 
-  return NULL_BOOK;
+  node__print(n);
 }
-
-string ALERT;
-int CHOICE_INPUT;
-
-Node *BOOKSHELF = nullptr;
-
-void page__utama();
-
-void page__tambah_buku_depan() {
-  system("clear");
-
-  string title, author;
-
-  cout << "Judul Buku: ";
-  cin.ignore();
-  getline(cin, title);
-
-  cout << "Penulis: ";
-  cin.ignore();
-  getline(cin, author);
-
-  BOOKSHELF = node__insert_first(BOOKSHELF, Book{title, author});
-}
-
-void page__tambah_buku_belakang() { system("clear"); }
-
-void page__hapus_buku() { system("clear"); }
-
-void page__tampilkan_buku() {
-  system("clear");
-
-  cout << "Koleksi buku anda: " << endl;
-
-  node__print_book(BOOKSHELF);
-
-  cout << "Tekan tombol sembarang untuk kembali ke halaman awal..." << endl;
-  getchar();
-
-  page__utama();
-}
-
-void page__utama() {
-  do {
-    system("clear");
-
-    if (ALERT != "") {
-      cout << ALERT << endl << endl;
-    }
-
-    ALERT = "";
-
-    cout << "=== menu manajemen daftar buku ===" << endl
-         << "1. Tambah buku di depan" << endl
-         << "2. Tambah buku di belakang" << endl
-         << "3. Hapus buku berdasarkan judul" << endl
-         << "4. Tampilkan daftar buku" << endl
-         << "5. Keluar" << endl
-         << endl;
-
-    cout << "pilih: ";
-    cin >> CHOICE_INPUT;
-
-    switch (CHOICE_INPUT) {
-    case 1:
-      page__tambah_buku_depan();
-      break;
-    case 2:
-      page__tambah_buku_belakang();
-      break;
-    case 3:
-      page__hapus_buku();
-      break;
-    case 4:
-      page__tampilkan_buku();
-      break;
-    case 5:
-      cout << "bye bye." << endl;
-      system("exit");
-      break;
-    default:
-      ALERT = "Pilihan tidak valid. Silahkan masukkan no 1-5!!";
-
-      break;
-    }
-  } while (ALERT != "");
-}
-
-int main() { page__utama(); }
