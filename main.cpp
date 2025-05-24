@@ -242,7 +242,7 @@ void page__tambah_buku_depan() {
   BOOKSHELF = node__insert_first(BOOKSHELF, Book{title, author});
 
   cout << "Berhasil menambahkan buku berjudul " << title
-       << " yang ditulis oleh " << author << "ke depan rak" << endl;
+       << " yang ditulis oleh " << author << " ke depan rak" << endl;
   cout << "tekan tombol sembarang untuk kembali ke halaman awal..." << endl;
 
   getchar();
@@ -280,7 +280,7 @@ void page__tambah_buku_belakang() {
   BOOKSHELF = node__insert_last(BOOKSHELF, Book{title, author});
 
   cout << "Berhasil menambahkan buku berjudul " << title
-       << " yang ditulis oleh " << author << "ke belakang rak" << endl;
+       << " yang ditulis oleh " << author << " ke belakang rak" << endl;
   cout << "tekan tombol sembarang untuk kembali ke halaman awal..." << endl;
 
   getchar();
@@ -303,7 +303,7 @@ void page__hapus_buku() {
   } else {
     BOOKSHELF = node__delete_by_address(BOOKSHELF, target_node);
 
-    cout << "Buku dengan judul " << title << "berhasil dihapus" << endl;
+    cout << "Buku dengan judul " << title << " berhasil dihapus" << endl;
   }
 
   cout << "tekan sembarang tombol untuk kembali ke halaman awal" << endl;
