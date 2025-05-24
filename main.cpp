@@ -53,6 +53,18 @@ int node__length(Node *node) { return _node__length_rec(node, 0); }
 /*  node__print(node->next);*/
 /*}*/
 
+void node__print_book(Node *node) {
+  cout << "===" << endl;
+  cout << "Judul: " << node->value.title << endl;
+  cout << "Penulis: " << node->value.author << endl << endl;
+
+  if (node->next == nullptr) {
+    return;
+  }
+
+  node__print_book(node->next);
+}
+
 Node *node__insert_first(Node *node, T datawith) {
   return node__add(datawith, node);
 }
@@ -128,7 +140,7 @@ Node *node__delete_by_index(Node *node, int at_index) {
 Book node_book__search_by_title(Node *node, string title) {
   Node *current = node;
 
-  while (current->next == NULL) {
+  while (current->next != NULL) {
     if (current->value.title == title) {
       return current->value;
     }
@@ -157,14 +169,14 @@ void page__tambah_buku_depan() {
   cin.ignore();
   getline(cin, author);
 
-  node__insert_first(BOOKSHELF, Book{title, author});
+  BOOKSHELF = node__insert_first(BOOKSHELF, Book{title, author});
 }
 
-void page__tambah_buku_belakang() {}
+void page__tambah_buku_belakang() { system("clear"); }
 
-void page__hapus_buku() {}
+void page__hapus_buku() { system("clear"); }
 
-void page__tampilkan_buku() {}
+void page__tampilkan_buku() { system("clear"); }
 
 void page__utama() {
   do {
@@ -198,7 +210,7 @@ void page__utama() {
       page__hapus_buku();
       break;
     case 4:
-      page__hapus_buku();
+      page__tampilkan_buku();
       break;
     case 5:
       cout << "bye bye." << endl;
@@ -212,8 +224,4 @@ void page__utama() {
   } while (ALERT != "");
 }
 
-int main() {
-  page__utama();
-  cout << "hello world" << endl;
-  return 0;
-}
+int main() { page__utama(); }
